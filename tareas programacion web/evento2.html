@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Keyboard Events</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <canvas id="canvas" width="400" height="300"></canvas>
+
+  </body>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Función para dibujar un círculo en el lienzo
+    function drawCircle(x, y, size) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = 'blue';
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    // Coordenadas iniciales del círculo
+    let x = canvas.width / 2;
+    let y = canvas.height / 2;
+    const circleSize = 20;
+
+    // Dibujar el círculo inicial
+    drawCircle(x, y, circleSize);
+
+    // Controlador de eventos de teclado
+    document.addEventListener('keydown', function(event) {
+      const key = event.key.toLowerCase();
+      const moveDistance = 10; // Distancia de movimiento
+
+      // Mover el círculo en función de la tecla presionada
+      switch (key) {
+        case 'w':
+          y -= moveDistance;
+          break;
+        case 'a':
+          x -= moveDistance;
+          break;
+        case 's':
+          y += moveDistance;
+          break;
+        case 'd':
+          x += moveDistance;
+          break;
+      }
+
+      // Dibujar el círculo en la nueva posición
+      drawCircle(x, y, circleSize);
+    });
+  </script>
+
+</html>

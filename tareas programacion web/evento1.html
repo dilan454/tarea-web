@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Text Toggle</title>
+  </head>
+
+  <body>
+
+    <button id="btn">Click me</button>
+
+  </body>
+  <script>
+    // Obtener referencia al botón
+    const btn = document.getElementById('btn');
+
+    // Agregar un controlador de eventos para el clic
+    btn.addEventListener('click', function() {
+      // Verificar el texto actual del botón
+      if (btn.textContent === 'Click me') {
+        // Si el texto actual es 'Click me', cambiarlo a 'Clicked!'
+        btn.textContent = 'Clicked!';
+      } else {
+        // Si el texto actual es 'Clicked!', cambiarlo a 'Click me'
+        btn.textContent = 'Click me';
+      }
+    });
+  </script>
+
+</html>

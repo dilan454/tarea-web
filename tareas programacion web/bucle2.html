@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Search Phonebook</title>
+    <style>
+      p {
+        color: blue;
+        margin: 0.5em 0;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <section class="preview">
+      <label for="nameInput">Ingrese un nombre:</label>
+      <input type="text" id="nameInput">
+      <button onclick="searchPhonebook()">Buscar</button>
+    </section>
+
+  </body>
+  <script>
+    // Definir el array de objetos phonebook
+    const phonebook = [
+      { name: 'John', phoneNumber: '123-456-7890' },
+      { name: 'Jane', phoneNumber: '987-654-3210' },
+      { name: 'Doe', phoneNumber: '555-555-5555' }
+    ];
+
+    // Función para buscar el nombre en el phonebook
+    function searchPhonebook() {
+      const name = document.getElementById('nameInput').value;
+      // Recorre el phonebook para buscar el nombre
+      for (let i = 0; i < phonebook.length; i++) {
+        if (phonebook[i].name === name) { // Si se encuentra el nombre
+          // Generar el nombre y el número de teléfono en un párrafo
+          const paragraph = document.createElement('p');
+          paragraph.textContent = `Nombre: ${phonebook[i].name}, Teléfono: ${phonebook[i].phoneNumber}`;
+          // Agregar el párrafo al elemento section
+          const section = document.querySelector('section');
+          section.appendChild(paragraph);
+          return; // Salir del bucle después de encontrar el nombre
+        }
+      }
+      // Si el nombre no se encuentra en el phonebook
+      const paragraph = document.createElement('p');
+      paragraph.textContent = 'Nombre no encontrado en el phonebook';
+      const section = document.querySelector('section');
+      section.appendChild(paragraph);
+    }
+  </script>
+
+</html>
+

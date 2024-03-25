@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Prime Numbers</title>
+    <style>
+      p {
+        color: green;
+        margin: 0.5em 0;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <section class="preview">
+      <p id="primeNumbers"></p>
+    </section>
+
+  </body>
+  <script>
+    // Valor inicial del iterador
+    let i = 500;
+    // Referencia al párrafo para mostrar los resultados
+    const para = document.getElementById('primeNumbers');
+
+    // Función para verificar si un número es primo
+    function isPrime(num) {
+      if (num <= 1) return false;
+      if (num <= 3) return true;
+      if (num % 2 === 0 || num % 3 === 0) return false;
+      let i = 5;
+      while (i * i <= num) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+        i += 6;
+      }
+      return true;
+    }
+
+    // Bucle para recorrer los números del 2 al 500 hacia atrás
+    while (i >= 2) {
+      // Si el número es primo, agrégalo al párrafo
+      if (isPrime(i)) {
+        if (para.textContent !== '') {
+          para.textContent += ', ';
+        }
+        para.textContent += i;
+      }
+      i--;
+    }
+  </script>
+
+</html>

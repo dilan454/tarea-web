@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <title>Button Background Change</title>
+  <style>
+    .button-bar {
+      display: flex;
+      justify-content: space-around;
+    }
+    .button-bar button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="button-bar">
+  <button data-color="red">Red</button>
+  <button data-color="green">Green</button>
+  <button data-color="blue">Blue</button>
+</div>
+
+<script>
+  const buttonBar = document.querySelector('.button-bar');
+
+  // Agregamos un solo controlador de eventos al contenedor de botones
+  buttonBar.addEventListener('click', function(event) {
+    const button = event.target.closest('button'); // Buscamos el botón más cercano al elemento clicado
+
+    if (button) {
+      const color = button.getAttribute('data-color'); // Obtenemos el color del atributo data-color del botón
+      buttonBar.style.backgroundColor = color; // Cambiamos el color de fondo del contenedor de botones
+    }
+  });
+</script>
+
+</body>
+</html>
